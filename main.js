@@ -113,6 +113,4 @@ function localStorageParents() {
 function localStorageChildren() {
   localStorage.setItem("childrenSizes", JSON.stringify(childrenSizes));
 }
-
-// TODO: for each parent and children size button, display x-mark on hover
 // TODO: show returned values in a table, with different colors
