@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   background-color: #3f3f3f;
   margin: 0;
 }
@@ -53,7 +54,7 @@ html, body {
   width: 25vw;
 }
 
-.size.input{
+.size.input {
   width: 15vw;
 }
 
@@ -63,7 +64,7 @@ p {
   margin: 0;
 }
 
-input{
+input {
   background-color: transparent;
   width: 3vw;
 }
@@ -83,11 +84,13 @@ input{
   bottom: 1vw;
 }
 
-.top.full, .bottom.full{
+.top.full,
+.bottom.full {
   left: 25vw;
 }
 
-.top.mobile, .bottom.mobile{
+.top.mobile,
+.bottom.mobile {
   right: 25vw;
 }
 
@@ -102,19 +105,19 @@ input{
   left: 2vw;
 }
 
-.width.desk{
+.width.desk {
   left: 7vw;
 }
 
-.left.desk{
+.left.desk {
   left: 6vw;
 }
 
-.width.mobile{
+.width.mobile {
   left: 12vw;
 }
 
-.left.mobile{
+.left.mobile {
   left: 11vw;
 }
 
@@ -124,25 +127,27 @@ input{
   right: 2vw;
 }
 
-.height.desk{
+.height.desk {
   right: 7vw;
 }
 
-.right.desk{
+.right.desk {
   right: 6vw;
 }
 
-.height.mobile{
+.height.mobile {
   right: 12vw;
 }
 
-.right.mobile{
+.right.mobile {
   right: 11vw;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-input[type=number] { -moz-appearance:textfield; }
+input[type="number"] {
+  -moz-appearance: textfield;
+}
