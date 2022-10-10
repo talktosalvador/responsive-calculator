@@ -9,7 +9,7 @@ html, body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 35vw;
+  width: 65vw;
   height: 19vw;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -43,7 +43,6 @@ html, body {
 }
 
 .pos {
-  width: 65vw;
   height: 10vw;
 }
 
