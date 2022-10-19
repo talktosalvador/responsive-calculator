@@ -4,7 +4,7 @@ body {
   margin: 0;
 }
 
-.pos {
+.position {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -50,7 +50,7 @@ body {
   background-color: #94abc5;
 }
 
-.pos.input {
+.position.input {
   width: 25vw;
 }
 
