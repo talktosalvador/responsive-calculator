@@ -6,42 +6,19 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="./style.css" rel="stylesheet" type="text/css" />
   </head>
-  <body class="body">
-    <div class="main">
-      <div class="position input">
-        <input id="top" type="number" class="top" />
-        <input id="right" type="number" class="right" />
-        <input id="bottom" type="number" class="bottom" />
-        <input id="left" type="number" class="left" />
-        <div class="size input">
-          <input id="width" type="number" class="width" />
-          <input id="height" type="number" class="height" />
-        </div>
+  <body>
+    <main>
+      <div>
+        <p>input</p>
+        <input id="userInput" type="number" autofocus />
+        <p>size</p>
+        <input id="sizeInput" type="number" />
+        <ul id="sizesList">
+          <li>1440</li>
+        </ul>
+        <ul id="resultsList"></ul>
       </div>
-      
-      <div class="position">
-        <p id="fullTop" class="top full">top</p>
-        <p id="deskTop" class="top">top</p>
-        <p id="mobileTop" class="top mobile">top</p>
-        <p id="fullRight" class="right">right</p>
-        <p id="deskRight" class="right desk">right</p>
-        <p id="mobileRight" class="right mobile">right</p>
-        <p id="fullBottom" class="bottom full">bottom</p>
-        <p id="deskBottom" class="bottom">bottom</p>
-        <p id="mobileBottom" class="bottom mobile">bottom</p>
-        <p id="fullLeft" class="left">left</p>
-        <p id="deskLeft" class="left desk">left</p>
-        <p id="mobileLeft" class="left mobile">left</p>
-        <div class="size">
-          <p id="fullWidth" class="width">width</p>
-          <p id="deskWidth" class="width desk">width</p>
-          <p id="mobileWidth" class="width mobile">width</p>
-          <p id="fullHeight" class="height">height</p>
-          <p id="deskHeight" class="height desk">height</p>
-          <p id="mobileHeight" class="height mobile">height</p>
-        </div>
-      </div>
-    </div>
-    <script src="calculadora.js"></script>
+    </main>
+    <script src="main.js"></script>
   </body>
 </html>
