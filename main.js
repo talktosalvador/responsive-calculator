@@ -4,6 +4,7 @@ const resulstsList = document.querySelector("#resultsList");
 const sizesList = document.querySelector("#sizesList");
 let results = [];
 let sizes = [1440];
+
 userInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     resulstsList.innerHTML = "";
@@ -40,3 +41,5 @@ sizeInput.addEventListener("keypress", (event) => {
 function sortNumbers(a, b) {
   return a - b;
 }
+
+// TODO: validate void input
