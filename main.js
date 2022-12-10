@@ -42,4 +42,7 @@ function sortNumbers(a, b) {
   return a - b;
 }
 
-// TODO: validate void input
+// TODO: reject invalid values and existing sizes => don't  show duplicated items
+// TODO: add favicon and improve title
+// TODO: display each entered size in a button, in hover show x-mark to erase it and update returned values
+// TODO: show returned values in a table, with different colors
