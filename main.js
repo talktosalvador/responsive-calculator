@@ -1,39 +1,39 @@
-const userInput = document.querySelector("#userInput");
-const sizeInput = document.querySelector("#sizeInput");
-const resulstsList = document.querySelector("#resultsList");
-const sizesList = document.querySelector("#sizesList");
-let results = [];
-let sizes = [1440];
+const childrenInput = document.querySelector("#children-input");
+const parentsInput = document.querySelector("#parents-input");
+const parentsList = document.querySelector("#parents-list");
+const resulstsList = document.querySelector("#results-list");
+let parentsSizes = [1440];
+let resultsSizes = [];
 
-userInput.addEventListener("keypress", (event) => {
+parentsInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
-    resulstsList.innerHTML = "";
-    const value = event.target.value;
-    userInput.value = "";
-    results.push(value);
-    results.sort(sortNumbers);
-    for (const result of results) {
+    const parentValue = event.target.value;
+    parentsList.innerHTML = "";
+    parentsInput.value = "";
+    parentsSizes.push(parentValue);
+    parentsSizes.sort(sortNumbers);
+    for (const size of parentsSizes) {
       let li = document.createElement("li");
-      li.appendChild(document.createTextNode(`${result}px => `));
-      for (const size of sizes) {
-        li.innerText += `${size}: ${((result / size) * 100).toFixed(2)}%, `;
-      }
-      resulstsList.appendChild(li);
+      li.appendChild(document.createTextNode(size));
+      parentsList.appendChild(li);
     }
   }
 });
 
-sizeInput.addEventListener("keypress", (event) => {
+childrenInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
-    sizesList.innerHTML = "";
-    const value = event.target.value;
-    sizeInput.value = "";
-    sizes.push(value);
-    sizes.sort(sortNumbers);
-    for (const size of sizes) {
+    const childrenValue = event.target.value;
+    resulstsList.innerHTML = "";
+    childrenInput.value = "";
+    resultsSizes.push(childrenValue);
+    resultsSizes.sort(sortNumbers);
+    for (const result of resultsSizes) {
       let li = document.createElement("li");
-      li.appendChild(document.createTextNode(size));
-      sizesList.appendChild(li);
+      li.appendChild(document.createTextNode(`${result}px => `));
+      for (const size of parentsSizes) {
+        li.innerText += `${size}: ${((result / size) * 100).toFixed(2)}%, `;
+      }
+      resulstsList.appendChild(li);
     }
   }
 });
