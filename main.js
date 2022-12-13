@@ -2,8 +2,18 @@ const childrenInput = document.querySelector("#children-input");
 const parentsInput = document.querySelector("#parents-input");
 const parentsList = document.querySelector("#parents-list");
 const resulstsList = document.querySelector("#results-list");
-let parentsSizes = [];
-let childrenSizes = [];
+
+let parentsSizes =
+  localStorage.getItem("parentSizes") === null
+    ? []
+    : JSON.parse(localStorage.getItem("parentSizes"));
+let childrenSizes =
+  localStorage.getItem("childrenSizes") === null
+    ? []
+    : JSON.parse(localStorage.getItem("childrenSizes"));
+
+addButtons(parentsSizes);
+addReturnSizes();
 
 parentsInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
@@ -19,6 +29,7 @@ parentsInput.addEventListener("keypress", (event) => {
     parentsSizes.sort(sortNumbers);
     addButtons(parentsSizes);
     addReturnSizes();
+    localStorageParents();
   }
 });
 
@@ -34,6 +45,7 @@ childrenInput.addEventListener("keypress", (event) => {
     childrenSizes.push(childrenValue);
     childrenSizes.sort(sortNumbers);
     addReturnSizes();
+    localStorageChildren();
   }
 });
 
@@ -52,6 +64,7 @@ function addButtons(arr) {
       parentsList.innerHTML = "";
       addButtons(parentsSizes);
       addReturnSizes();
+      localStorageParents();
     };
     parentsList.appendChild(btn);
   }
@@ -73,6 +86,7 @@ function addReturnSizes() {
       }
       resulstsList.innerHTML = "";
       addReturnSizes();
+      localStorageChildren();
     };
     returnSizeDiv.appendChild(childrenButton);
     for (const parentSize of parentsSizes) {
@@ -92,6 +106,13 @@ function sortNumbers(a, b) {
   return a - b;
 }
 
-// TODO: persist data in local
+function localStorageParents() {
+  localStorage.setItem("parentSizes", JSON.stringify(parentsSizes));
+}
+
+function localStorageChildren() {
+  localStorage.setItem("childrenSizes", JSON.stringify(childrenSizes));
+}
+
 // TODO: for each parent and children size button, display x-mark on hover
 // TODO: show returned values in a table, with different colors

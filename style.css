@@ -33,7 +33,7 @@ input[type="number"]::-webkit-outer-spin-button {
 #results-list * {
   font-size: 1.5vmin;
   min-width: 6vmin;
-  margin: 1vmin .5vmin 0vmin 0vmin;
+  margin: 1vmin 0.5vmin 0vmin 0vmin;
   padding: 0.3vmin 1vmin 0.3vmin 1vmin;
   border: 0;
   border-radius: 2vmin;
