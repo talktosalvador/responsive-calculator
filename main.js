@@ -9,19 +9,20 @@ parentsInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     const parentValue = event.target.value;
     if (parentsSizes.includes(parentValue) || parentValue <= 0) {
-      alert(`Ooops!\nIt already exists or is invalid`)
+      alert(`Ooops!\nIt already exists or is invalid`);
       parentsInput.value = "";
-      return
+      return;
     }
     parentsList.innerHTML = "";
     parentsInput.value = "";
     parentsSizes.push(parentValue);
     parentsSizes.sort(sortNumbers);
-    for (const size of parentsSizes) {
-      let li = document.createElement("li");
-      li.appendChild(document.createTextNode(size));
-      parentsList.appendChild(li);
-    }
+    addButtons(parentsSizes);
+    // for (const size of parentsSizes) {
+    //   let li = document.createElement("li");
+    //   li.appendChild(document.createTextNode(size));
+    //   parentsList.appendChild(li);
+    // }
   }
 });
 
@@ -29,9 +30,9 @@ childrenInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     const childrenValue = event.target.value;
     if (childrenSizes.includes(childrenValue) || childrenValue <= 0) {
-      alert(`Ooops!\nIt already exists or is invalid`)
+      alert(`Ooops!\nIt already exists or is invalid`);
       childrenInput.value = "";
-      return
+      return;
     }
     resulstsList.innerHTML = "";
     childrenInput.value = "";
@@ -47,6 +48,34 @@ childrenInput.addEventListener("keypress", (event) => {
     }
   }
 });
+
+function addButtons(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    const btn = document.createElement("BUTTON");
+    const currentSize = arr[i];
+    const indexCurrentSize = arr[i];
+    btn.innerHTML = currentSize;
+    // btn.id = `btn-${currentSize}`;
+    // btn.name = `btn-${currentSize}`;
+    // btn.class = 'btn-classs';
+    // btn.type = "submit";
+    btn.onclick = function () {
+      console.log(`size: ${currentSize}`);
+
+      // const array = [2, 5, 9];
+      // console.log(array);
+      // const index = array.indexOf(5);
+      // if (index > -1) {
+        //   // only splice array when item is found
+        //   array.splice(index, 1); // 2nd parameter means remove one item only
+        // }
+        // // array = [2, 9]
+        // console.log(array);
+        
+      };
+    parentsList.appendChild(btn);
+  }
+}
 
 function sortNumbers(a, b) {
   return a - b;

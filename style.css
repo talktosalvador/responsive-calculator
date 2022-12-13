@@ -20,3 +20,11 @@ input[type="number"]::-webkit-outer-spin-button {
 #resultsList {
   list-style: none;
 }
+
+#parents-list * {
+  font-size: 2vw;
+  margin: 1vw 1vw 1vw 0vw;
+  padding: 1vw;
+  border: 0;
+  border-radius: 2vw;
+}
