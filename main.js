@@ -2,7 +2,7 @@ const childrenInput = document.querySelector("#children-input");
 const parentsInput = document.querySelector("#parents-input");
 const parentsList = document.querySelector("#parents-list");
 const resulstsList = document.querySelector("#results-list");
-let parentsSizes = [1440];
+let parentsSizes = [];
 let childrenSizes = [];
 
 parentsInput.addEventListener("keypress", (event) => {
@@ -18,6 +18,7 @@ parentsInput.addEventListener("keypress", (event) => {
     parentsSizes.push(parentValue);
     parentsSizes.sort(sortNumbers);
     addButtons(parentsSizes);
+    addReturnSizes()
   }
 });
 
@@ -29,18 +30,10 @@ childrenInput.addEventListener("keypress", (event) => {
       childrenInput.value = "";
       return;
     }
-    resulstsList.innerHTML = "";
     childrenInput.value = "";
     childrenSizes.push(childrenValue);
     childrenSizes.sort(sortNumbers);
-    for (const result of childrenSizes) {
-      let li = document.createElement("li");
-      li.appendChild(document.createTextNode(`${result}px => `));
-      for (const size of parentsSizes) {
-        li.innerText += `${size}: ${((result / size) * 100).toFixed(2)}%, `;
-      }
-      resulstsList.appendChild(li);
-    }
+    addReturnSizes()
   }
 });
 
@@ -48,26 +41,18 @@ function addButtons(arr) {
   for (var i = 0; i < arr.length; i++) {
     const btn = document.createElement("BUTTON");
     const currentSize = arr[i];
-    const indexCurrentSize = arr[i];
+    const indexCurrentSize = arr.indexOf(currentSize);
     btn.innerHTML = currentSize;
-    // btn.id = `btn-${currentSize}`;
-    // btn.name = `btn-${currentSize}`;
-    // btn.class = 'btn-classs';
-    // btn.type = "submit";
     btn.onclick = function () {
-      console.log(`size: ${currentSize}`);
-
-      // const array = [2, 5, 9];
-      // console.log(array);
-      // const index = array.indexOf(5);
-      // if (index > -1) {
-        //   // only splice array when item is found
-        //   array.splice(index, 1); // 2nd parameter means remove one item only
-        // }
-        // // array = [2, 9]
-        // console.log(array);
-        
-      };
+      if (indexCurrentSize > -1) {
+        arr.splice(indexCurrentSize, 1);
+      } else {
+        alert("parent sizes array error");
+      }
+      parentsList.innerHTML = "";
+      addButtons(parentsSizes);
+      addReturnSizes()
+    };
     parentsList.appendChild(btn);
   }
 }
@@ -76,5 +61,17 @@ function sortNumbers(a, b) {
   return a - b;
 }
 
-// TODO: display each entered size in a button, in hover show x-mark to erase it and update returned values
+function addReturnSizes() {
+  resulstsList.innerHTML = "";
+  for (const result of childrenSizes) {
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(`${result}px => `));
+    for (const size of parentsSizes) {
+      li.innerText += `${size}: ${((result / size) * 100).toFixed(2)}%, `;
+    }
+    resulstsList.appendChild(li);
+  }
+}
+
+// TODO: for each parent size button, hover display x-mark
 // TODO: show returned values in a table, with different colors
