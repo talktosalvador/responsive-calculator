@@ -61,7 +61,7 @@ function addReturnSizes() {
   resulstsList.innerHTML = "";
   for (const childrenSize of childrenSizes) {
     const returnSizeDiv = document.createElement("div");
-    returnSizeDiv.style.display = "inline"
+    returnSizeDiv.style.display = "inline";
     const childrenButton = document.createElement("button");
     const indexCurrentChildrenSize = childrenSizes.indexOf(childrenSize);
     childrenButton.innerHTML = childrenSize;
@@ -77,11 +77,12 @@ function addReturnSizes() {
     returnSizeDiv.appendChild(childrenButton);
     for (const parentSize of parentsSizes) {
       const equivalenceButton = document.createElement("button");
-      equivalenceButton.innerHTML = `${parentSize}: ${(
-        (childrenSize / parentSize) *
-        100
-      ).toFixed(2)}%`;
-      returnSizeDiv.appendChild(equivalenceButton)
+      const equivalence = ((childrenSize / parentSize) * 100).toFixed(2);
+      equivalenceButton.innerHTML = `${parentSize}: ${equivalence}%`;
+      equivalenceButton.onclick = function () {
+        navigator.clipboard.writeText(equivalence);
+      };
+      returnSizeDiv.appendChild(equivalenceButton);
     }
     resulstsList.appendChild(returnSizeDiv);
   }
@@ -91,6 +92,6 @@ function sortNumbers(a, b) {
   return a - b;
 }
 
-// TODO: copy to clipboard each equivalence
+// TODO: persist data in local
 // TODO: for each parent and children size button, display x-mark on hover
 // TODO: show returned values in a table, with different colors
