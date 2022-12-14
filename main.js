@@ -18,7 +18,7 @@ parentsInput.addEventListener("keypress", (event) => {
     parentsSizes.push(parentValue);
     parentsSizes.sort(sortNumbers);
     addButtons(parentsSizes);
-    addReturnSizes()
+    addReturnSizes();
   }
 });
 
@@ -33,13 +33,13 @@ childrenInput.addEventListener("keypress", (event) => {
     childrenInput.value = "";
     childrenSizes.push(childrenValue);
     childrenSizes.sort(sortNumbers);
-    addReturnSizes()
+    addReturnSizes();
   }
 });
 
 function addButtons(arr) {
   for (var i = 0; i < arr.length; i++) {
-    const btn = document.createElement("BUTTON");
+    const btn = document.createElement("button");
     const currentSize = arr[i];
     const indexCurrentSize = arr.indexOf(currentSize);
     btn.innerHTML = currentSize;
@@ -51,9 +51,39 @@ function addButtons(arr) {
       }
       parentsList.innerHTML = "";
       addButtons(parentsSizes);
-      addReturnSizes()
+      addReturnSizes();
     };
     parentsList.appendChild(btn);
+  }
+}
+
+function addReturnSizes() {
+  resulstsList.innerHTML = "";
+  for (const childrenSize of childrenSizes) {
+    const returnSizeDiv = document.createElement("div");
+    returnSizeDiv.style.display = "inline"
+    const childrenButton = document.createElement("button");
+    const indexCurrentChildrenSize = childrenSizes.indexOf(childrenSize);
+    childrenButton.innerHTML = childrenSize;
+    childrenButton.onclick = function () {
+      if (indexCurrentChildrenSize > -1) {
+        childrenSizes.splice(indexCurrentChildrenSize, 1);
+      } else {
+        alert("children sizes array error");
+      }
+      resulstsList.innerHTML = "";
+      addReturnSizes();
+    };
+    returnSizeDiv.appendChild(childrenButton);
+    for (const parentSize of parentsSizes) {
+      const equivalenceButton = document.createElement("button");
+      equivalenceButton.innerHTML = `${parentSize}: ${(
+        (childrenSize / parentSize) *
+        100
+      ).toFixed(2)}%`;
+      returnSizeDiv.appendChild(equivalenceButton)
+    }
+    resulstsList.appendChild(returnSizeDiv);
   }
 }
 
@@ -61,17 +91,6 @@ function sortNumbers(a, b) {
   return a - b;
 }
 
-function addReturnSizes() {
-  resulstsList.innerHTML = "";
-  for (const result of childrenSizes) {
-    let li = document.createElement("li");
-    li.appendChild(document.createTextNode(`${result}px => `));
-    for (const size of parentsSizes) {
-      li.innerText += `${size}: ${((result / size) * 100).toFixed(2)}%, `;
-    }
-    resulstsList.appendChild(li);
-  }
-}
-
-// TODO: for each parent size button, hover display x-mark
+// TODO: copy to clipboard each equivalence
+// TODO: for each parent and children size button, display x-mark on hover
 // TODO: show returned values in a table, with different colors
