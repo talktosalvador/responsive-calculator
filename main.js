@@ -18,11 +18,6 @@ parentsInput.addEventListener("keypress", (event) => {
     parentsSizes.push(parentValue);
     parentsSizes.sort(sortNumbers);
     addButtons(parentsSizes);
-    // for (const size of parentsSizes) {
-    //   let li = document.createElement("li");
-    //   li.appendChild(document.createTextNode(size));
-    //   parentsList.appendChild(li);
-    // }
   }
 });
 
