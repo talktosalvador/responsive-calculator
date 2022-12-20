@@ -113,4 +113,5 @@ function localStorageParents() {
 function localStorageChildren() {
   localStorage.setItem("childrenSizes", JSON.stringify(childrenSizes));
 }
+
 // TODO: show returned values in a table, with different colors
