@@ -94,7 +94,7 @@ function addReturnSizes() {
       const equivalence = ((childrenSize / parentSize) * 100).toFixed(2);
       equivalenceButton.innerHTML = `${parentSize}: ${equivalence}%`;
       equivalenceButton.onclick = function () {
-        navigator.clipboard.writeText(equivalence);
+        navigator.clipboard.writeText(`${equivalence}vw`);
       };
       returnSizeDiv.appendChild(equivalenceButton);
     }
